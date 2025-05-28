@@ -1,0 +1,3434 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2023.1">
+  <Nodes>
+    <Node ToolID="131">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="870" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="True" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="MD5" selected="True" />
+            <SelectField field="DECILE" selected="True" />
+            <SelectField field="Open_date" selected="True" />
+            <SelectField field="Click_date" selected="True" />
+            <SelectField field="CASS_ZIP" selected="True" />
+            <SelectField field="CASS_AddressPlusSuite" selected="True" />
+            <SelectField field="CASS_State" selected="True" />
+            <SelectField field="SCORE" selected="True" />
+            <SelectField field="del_date" selected="True" />
+            <SelectField field="PERCENTILE" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="133">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+        <Position x="1362" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <File MaxRecords="" FileFormat="65">snowbl:DSN=TEST_SF_DRIVER;UID=;PWD=__EncPwd1__;Staging=local;Method=user|||BOA_CAMPAIGN_QA_DATA</File>
+          <Passwords>424C7A270E609EE97B68F613548DDFB18F06060D0E867</Passwords>
+          <Disable>False</Disable>
+          <FormatSpecificOptions>
+            <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+            <PostSQL />
+            <ChunkSize>64</ChunkSize>
+            <TableStyle>Quoted</TableStyle>
+            <PreSQL>USE AWA_DB.AWA_SCHEMA</PreSQL>
+            <CompressionType>GZip</CompressionType>
+            <NumThreads>4</NumThreads>
+            <OutputOption>Create</OutputOption>
+          </FormatSpecificOptions>
+          <MultiFile value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=BOA_CAMPAIGN_QA_DATA</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+    </Node>
+    <Node ToolID="203">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="54" y="78" width="100" height="39" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>CAMPAIGN DATA</Text>
+          <Font name="Segoe UI" size="8.25" style="0" />
+          <TextColor name="Yellow" />
+          <FillColor r="255" g="128" b="64" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="268">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="354" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="LowerCase(Trim([MD5]))" field="md5" size="254" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[md5 = LowerCase(Trim([MD5]))
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="286">
+      <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+        <Position x="342" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SummarizeFields>
+            <SummarizeField field="MD5" action="Count" rename="Count" />
+            <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+          </SummarizeFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+    </Node>
+    <Node ToolID="339">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="762" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="md5" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="MD5" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Right_MD5" selected="False" rename="Right_MD5" input="Right_" />
+                <SelectField field="Right_DECILE" selected="False" rename="Right_DECILE" input="Right_" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="393">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="1158" y="150" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="267">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="378" y="609" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="LowerCase(Trim([MD5]))" field="MD5" size="254" type="V_WString" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText><![CDATA[MD5 = LowerCase(Trim([MD5]))
+]]></DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="206">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="78" y="558" width="146" height="24" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>BOA_MASTER_DATA</Text>
+          <Font name="Segoe UI" size="11.25" style="0" />
+          <TextColor name="White" />
+          <FillColor name="Teal" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="463">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="66" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords>424C7A270E609EE97B68F613548DDFB18F06060D0E867</Passwords>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=TEST_SF_DRIVER;UID=;PWD=__EncPwd1__|||select * 
+from "AWA_DB"."AWA_SCHEMA"."BOA_CAMPAIGN_DATA"</File>
+          <FormatSpecificOptions>
+            <PreSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <NoProgress>True</NoProgress>
+            <SessionReadOnly>True</SessionReadOnly>
+            <CacheData>False</CacheData>
+            <TableStyle>Quoted</TableStyle>
+            <ReadUncommitted>False</ReadUncommitted>
+            <PostSQL>USE AWA_DB.AWA_SCHEMA;</PostSQL>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=select * 
+from "AWA_DB"."AW...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="464">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="258" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="md5hash" selected="True" rename="md5" />
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="465">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="102" y="609" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords>424C7A270E609EE97B68F613548DDFB18F06060D0E867</Passwords>
+          <File RecordLimit="" FileFormat="23">odbc:DSN=TEST_SF_DRIVER;UID=;PWD=__EncPwd1__|||select * 
+from "AWA_DB"."AWA_SCHEMA"."BOA_MASTER_DATA"</File>
+          <FormatSpecificOptions>
+            <PreSQL />
+            <PreSQLOnConfig>True</PreSQLOnConfig>
+            <NoProgress>True</NoProgress>
+            <SessionReadOnly>True</SessionReadOnly>
+            <CacheData>False</CacheData>
+            <TableStyle>Quoted</TableStyle>
+            <ReadUncommitted>False</ReadUncommitted>
+            <PostSQL>USE AWA_DB.AWA_SCHEMA;</PostSQL>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=select * 
+from "AWA_DB"."AW...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="466">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="222" y="609" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="469">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DynamicSelect.DynamicSelect">
+        <Position x="162" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>Formula</Mode>
+          <Expression>CONTAINS('md5hash',[Name])||CONTAINS('del_date',[Name])||CONTAINS('open_date',[Name])||CONTAINS('click_date',[Name])||CONTAINS('decile',[Name])</Expression>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDynamicSelect" />
+    </Node>
+    <Node ToolID="470">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="546" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Campaign Count and Unique Count\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Campaign Count and Unique Coun...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="471">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="438" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="Count" selected="True" Alignment="Right" Width="" Places="0" />
+            <Field name="CountDistinct_MD5" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar>Count</SimpleVar>
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="472">
+      <GuiSettings Plugin="PortfolioPluginsGui.Email.Email">
+        <Position x="642" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SMTPServerName>smtp.gmail.com</SMTPServerName>
+          <ToIsField value="False" />
+          <To>alternatemailforme1999@gmail.com</To>
+          <CcIsField value="False" />
+          <Cc />
+          <BccIsField value="False" />
+          <Bcc />
+          <FromIsField value="False" />
+          <From>alternatemailforme1999@gmail.com</From>
+          <SubjectIsField value="False" />
+          <Subject>SWIGGY_COUPON_DATA_LOAD_SUMMARY</Subject>
+          <BodyIsField value="True" />
+          <Body>Table</Body>
+          <UserName>alternatemailforme1999@gmail.com</UserName>
+          <Enabled>False</Enabled>
+          <Password>4B5E94FEFFAB6F6BD359A78FAD8D6C5970172B0650E59DDD8446D283988E34C2CD12B4C94B5D0EC171AB3</Password>
+          <Port>465</Port>
+          <Encryption>SSL/TLS</Encryption>
+          <SMTPAuth value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxComposerEmail" />
+    </Node>
+    <Node ToolID="475">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1626" y="498" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 State Wise counts\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>State Wise counts</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="476">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1518" y="498" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="CASS_State" selected="True" Alignment="Right" />
+            <Field name="Count" selected="True" Alignment="Right" Width="" Places="0" />
+            <Field name="CountDistinct_MD5" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar>Count</SimpleVar>
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="478">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1626" y="654" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Click Date > Open Date\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Click Date &gt; Open Date</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="479">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1518" y="654" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="482">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1638" y="762" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Duplicate Email_MD5 Count in Campaign\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Duplicate Email_MD5 Count in C...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="483">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1530" y="762" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="485">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1638" y="870" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Open Date >= Del Date\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Open Date &gt;= Del Date</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="486">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1530" y="870" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="488">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1650" y="1002" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Md5 Length < 32 Count\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Md5 Length &lt; 32 Count</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="489">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1542" y="1002" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="493">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1662" y="1098" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Md5 Null Count\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Md5 Null Count</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="494">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1554" y="1098" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="496">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1590" y="1218" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Day Wise Freq Del Opens Clicks\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Day Wise Freq Del Opens Clicks</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="497">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1482" y="1218" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="499">
+      <GuiSettings>
+        <Position x="1722" y="1530" />
+      </GuiSettings>
+      <Properties>
+        <Configuration />
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="CountRecords.yxmc" />
+    </Node>
+    <Node ToolID="500">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="1926" y="1530" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Unsub Count\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Unsub Count</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="501">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="1818" y="1530" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="504">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="4758" y="1134" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 Final Converter Count\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Final Converter Count</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="505">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="4650" y="1134" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="md5" selected="True" Alignment="Right" />
+            <Field name="decile" selected="True" Alignment="Right" />
+            <Field name="open_date" selected="True" Alignment="Right" />
+            <Field name="click_date" selected="True" Alignment="Right" />
+            <Field name="CASS_ZIP" selected="True" Alignment="Right" />
+            <Field name="CASS_ADDRESSPLUSSUITE" selected="True" Alignment="Right" />
+            <Field name="CASS_STATE" selected="True" Alignment="Right" />
+            <Field name="SCORE" selected="True" Alignment="Right" />
+            <Field name="del_date" selected="True" Alignment="Right" />
+            <Field name="PERCENTILE" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="507">
+      <GuiSettings Plugin="VisualLayout">
+        <Position x="4998" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <LayoutFields>
+            <Document>
+              <TempFileType>pdf</TempFileType>
+              <PortraitMode value="true" />
+              <RenderType>PDF</RenderType>
+              <PaperType bottom="0" height="1334.1635" left="0" right="0" top="0" width="944.875">
+                <PageType>B4 (250mm x 353mm)</PageType>
+                <MarginType>Custom</MarginType>
+              </PaperType>
+            </Document>
+            <Layout>
+              <Node fusedChildren="false" key="1" orientation="vertical" repeatDirection="vertical">
+                <Node fusedChildren="false" key="3" orientation="horizontal" repeatDirection="vertical">
+                  <Node connectionName="#2" fieldName="Table" height="1080" isFused="false" isLocked="false" key="10" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="292" subWidthCount="1" top="216" width="292" />
+                  <Node fusedChildren="false" key="18" orientation="vertical" repeatDirection="vertical">
+                    <Node connectionName="#7" fieldName="Table" height="108" isFused="false" isLocked="false" key="16" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="116" subWidthCount="1" top="213" width="116" />
+                    <Node fusedChildren="false" key="20" orientation="horizontal" repeatDirection="vertical">
+                      <Node fusedChildren="false" key="4" orientation="vertical" repeatDirection="vertical">
+                        <Node fusedChildren="false" key="19" orientation="vertical" repeatDirection="vertical">
+                          <Node connectionName="#1" fieldName="Table" height="108" isFused="false" isLocked="false" key="5" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="245" subWidthCount="1" top="0" width="245" />
+                          <Node connectionName="#6" fieldName="Table" height="90" isFused="false" isLocked="false" key="7" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="174" subWidthCount="1" top="0" width="174" />
+                        </Node>
+                        <Node connectionName="#3" fieldName="Table" height="200" isFused="false" isLocked="false" key="6" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="190" subWidthCount="1" top="0" width="190" />
+                      </Node>
+                      <Node fusedChildren="false" key="8" orientation="horizontal" repeatDirection="vertical">
+                        <Node connectionName="#4" fieldName="Table" height="108" isFused="false" isLocked="false" key="14" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="204" subWidthCount="1" top="0" width="204" />
+                        <Node connectionName="#4" fieldName="Table" height="108" isFused="false" isLocked="false" key="15" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="204" subWidthCount="1" top="0" width="204" />
+                      </Node>
+                    </Node>
+                    <Node connectionName="#11" fieldName="Table" height="200" isFused="false" isLocked="false" key="22" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="190" subWidthCount="1" top="0" width="190" />
+                    <Node connectionName="#8" fieldName="Table" height="222" isFused="false" isLocked="false" key="9" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="602" subWidthCount="1" top="0" width="602" />
+                  </Node>
+                </Node>
+                <Node connectionName="#10" fieldName="Table" height="200" isFused="false" isLocked="false" key="11" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="190" subWidthCount="1" top="0" width="190" />
+                <Node connectionName="#9" fieldName="Table" height="108" isFused="false" isLocked="false" key="12" left="0" orientation="horizontal" repeatDirection="vertical" source="Report:Table:Basic:" subWidth0="99" subWidthCount="1" top="0" width="99" />
+              </Node>
+            </Layout>
+            <TempFiles>{"#1":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_42f8d02cc51a469faf85558501c7413b_.yxdb","#2":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_7982d59a8b754d469b533ba4e8afce2b_.yxdb","#3":"","#4":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_42a15e83e7e64d77aebdfe7890f2d1e6_.yxdb","#5":"","#6":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_8001f7625f3441deb0719d25f48736b8_.yxdb","#7":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_d1fb6b566f804d888bb246da4d0648f8_.yxdb","#8":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_cd61031129e24d87b921557b1b7c588a_.yxdb","#9":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_a4f88770397f4daaac1fb2ffbf6ff220_.yxdb","#10":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_d449078c8b6b4e7fb9d761864088c431_.yxdb","#11":"C:\\Users\\HEMANT~1\\AppData\\Local\\Temp\\Alteryx\\Engine_10412_3c38444afeaf4f27a3f74e689d7fa9ae_\\Engine_6764_44116af25f594c1a84c66a757cc9ac2a_.yxdb"}</TempFiles>
+            <OriginalSnippets>{"#7":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_6a8952f6-0e8e-4222-88c5-f200dbc6d7ba_.html"]},"#4":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_bcd48a71-d535-44ab-abd2-0b51b55d52a1_.html"]},"#8":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_294f060f-2945-4708-9fad-f60b956f76ea_.html"]},"#1":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_2d83d8f8-191f-41e9-a219-981df7fd7aed_.html"]},"#9":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_40b87b12-381c-4dfe-a8d7-5a02becb32bc_.html"]},"#6":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_419f0c0d-05f5-4e5d-8fc3-6f671f5e746e_.html"]},"#2":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_61d68862-6427-4f1e-9493-739a676ad91e_.html"]}}</OriginalSnippets>
+            <OriginalThumbnails>{"#7":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_72a4dc9d-1e9f-4c8c-8d63-94b8d7e76ef7_.html"]},"#4":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_adb1f5ca-423f-4c93-8525-df4a2357ff8a_.html"]},"#8":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_142a5bc9-fec8-43e5-acbf-757f1a086313_.html"]},"#1":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_18eed65f-5ff6-4f88-840a-cbf0c628344c_.html"]},"#9":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_051fbc52-69d0-4bde-abe5-1b265d11a105_.html"]},"#6":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_575f5584-72b1-4a97-aabd-cdd07f6ded39_.html"]},"#2":{"Table":["C:\\Users\\Hemanth Nalam\\AppData\\Local\\Temp\\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_\\Alteryx_6764_0b5440d7-9a4c-47e1-a9eb-12992fedfd24_.html"]}}</OriginalThumbnails>
+            <AllowResizing>true</AllowResizing>
+            <CanJoin>false</CanJoin>
+            <VisFolderPath>C:\Users\Hemanth Nalam\AppData\Local\Temp\Alteryx_6764_ed05554b-fb0e-4e0b-8446-83fe7b46c405_</VisFolderPath>
+            <NumDeletions>0</NumDeletions>
+            <NumTinaToggleUses>0</NumTinaToggleUses>
+            <NumSnippetMoves>0</NumSnippetMoves>
+            <NumSnippetRearrangements>11</NumSnippetRearrangements>
+            <NumIncomingConnections>11</NumIncomingConnections>
+          </LayoutFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerVisualLayout" />
+    </Node>
+    <Node ToolID="508">
+      <GuiSettings Plugin="PortfolioPluginsGui.Email.Email">
+        <Position x="5142" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <SMTPServerName>smtp.gmail.com</SMTPServerName>
+          <ToIsField value="False" />
+          <To />
+          <CcIsField value="False" />
+          <Cc />
+          <BccIsField value="False" />
+          <Bcc />
+          <FromIsField value="False" />
+          <From />
+          <SubjectIsField value="False" />
+          <Subject>BOA_SUMMARY_OF_STATS</Subject>
+          <BodyIsField value="True" />
+          <Body>Layout</Body>
+          <UserName />
+          <Enabled>True</Enabled>
+          <Password />
+          <Port>465</Port>
+          <Encryption>SSL/TLS</Encryption>
+          <SMTPAuth value="True" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxComposerEmail" />
+    </Node>
+    <Node ToolID="509">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="2286" y="762" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <AutoResetMode>ByName</AutoResetMode>
+          <MultiMetaInfo>
+            <MetaInfo name="#1">
+              <RecordInfo>
+                <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                <Field name="CASS_ZIP" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="5" />
+                <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="6" />
+                <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo name="#2">
+              <RecordInfo>
+                <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                <Field name="CASS_ZIP" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="5" />
+                <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="6" />
+                <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo name="#3">
+              <RecordInfo>
+                <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                <Field name="CASS_ZIP" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="5" />
+                <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="6" />
+                <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+              </RecordInfo>
+            </MetaInfo>
+            <MetaInfo name="#4">
+              <RecordInfo>
+                <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                <Field name="CASS_ZIP" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="5" />
+                <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="6" />
+                <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+              </RecordInfo>
+            </MetaInfo>
+          </MultiMetaInfo>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ManualDelayed</Mode>
+          <SetOutputOrder value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="510">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="2394" y="762" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="md5" selected="True" />
+            <SelectField field="*Unknown" selected="False" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="511">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+        <Position x="2718" y="702" />
+      </GuiSettings>
+      <Properties>
+        <Configuration joinByRecordPos="False">
+          <JoinInfo connection="Left">
+            <Field field="md5" />
+          </JoinInfo>
+          <JoinInfo connection="Right">
+            <Field field="md5" />
+          </JoinInfo>
+          <SelectConfiguration>
+            <Configuration outputConnection="Join">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Right_md5" selected="True" rename="Right_md5" input="Right_" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+    </Node>
+    <Node ToolID="512">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+        <Position x="2418" y="558" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <OrderChanged value="False" />
+          <CommaDecimal value="False" />
+          <SelectFields>
+            <SelectField field="*Unknown" selected="True" />
+          </SelectFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+    </Node>
+    <Node ToolID="515">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="4998" y="606" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <HeaderMode value="True" />
+          <HeaderField>Table</HeaderField>
+          <Position>Above</Position>
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+\viewkind4\uc1\pard\fs24 To 10 Converters\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>To 10 Converters</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="516">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="4890" y="606" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False" />
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="CUST_NO" selected="True" Alignment="Right" />
+            <Field name="Count" selected="True" Alignment="Right" />
+            <Field name="*Unknown" selected="True" Alignment="Right" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="3b1eb7d2-bd79-4b2e-a938-e4adb0963255">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Simple</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>0</SimpleConst>
+              <Formula>1</Formula>
+              <Style TextColor="#ff0000" />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="518">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="5058" y="138" width="228" height="40" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>UPDATE YOUR CREDENTIALS IN MAIL TOOL</Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor r="255" g="128" b="64" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="474">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="521" y="1673" width="1355" height="301" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>UNSUN CONTAINER</Caption>
+          <Style TextColor="#314c4a" FillColor="#8080c0" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>UNSUN CONTAINER</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="367">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1266" y="1722" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="MD5" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="361">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1746" y="1734" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="65">snowbl:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__;Staging=local;Method=user|||BOA_OPTOUT_MATCHED</File>
+              <Passwords>4F164804500CDEC27BF1D59863936333A6014EC2F71F7A5399A464EB11A37CF8A</Passwords>
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <IgnoreDropTableSQLErrors>False</IgnoreDropTableSQLErrors>
+                <PostSQL />
+                <ChunkSize>64</ChunkSize>
+                <TableStyle>Quoted</TableStyle>
+                <PreSQL>USE AWA_DB.AWA_SCHEMA;</PreSQL>
+                <CompressionType>GZip</CompressionType>
+                <NumThreads>4</NumThreads>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=BOA_OPTOUT_MATCHED</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="360">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1614" y="1734" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Date" selected="False" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="359">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="1254" y="1794" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="MD5" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="358">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1518" y="1734" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="MD5" selected="True" />
+                <SelectField field="Unsub_Date" selected="True" rename="Date" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="355">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="1434" y="1734" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="MD5" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="MD5" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Right_MD5" selected="True" rename="Right_MD5" input="Right_" />
+                    <SelectField field="Right_Email" selected="False" input="Right_" />
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="352">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="762" y="1794" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsNull([Email])||IsEmpty([Email])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsNull([Email])||IsEmpty([Email])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="349">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1062" y="1890" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="Timestamp" action="GroupBy" rename="Timestamp" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="348">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="930" y="1806" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[Timestamp] &gt;= "2025-04-02"</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Timestamp] &gt;= "2025-04-02"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="346">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1098" y="1794" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Email" selected="True" rename="MD5" />
+                <SelectField field="Timestamp" selected="True" rename="Unsub_Date" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="395">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="654" y="1794" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Timestamp" selected="True" type="Date" size="10" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="467">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="546" y="1794" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords>4F164804500CDEC27BF1D59863936333A6014EC2F71F7A5399A464EB11A37CF8A</Passwords>
+              <File RecordLimit="" FileFormat="23">odbc:DSN=TEST_SF_DRIVER;UID=;PWD=__EncPwd1__|||select * 
+from "AWA_DB"."AWA_SCHEMA"."BOA_OPTOUT_DATA"</File>
+              <FormatSpecificOptions>
+                <PreSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <NoProgress>True</NoProgress>
+                <SessionReadOnly>True</SessionReadOnly>
+                <CacheData>False</CacheData>
+                <TableStyle>Quoted</TableStyle>
+                <ReadUncommitted>False</ReadUncommitted>
+                <PostSQL />
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=select * 
+from "AWA_DB"."AW...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="473">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1157" y="389" width="314" height="954" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Container 473</Caption>
+          <Style TextColor="#314c4a" FillColor="#80ff80" BorderColor="#80ff80" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="144">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="1182" y="500" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="284">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1278" y="500" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="CASS_State" action="GroupBy" rename="CASS_State" />
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="285">
+          <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+            <Position x="1194" y="438" width="100" height="40" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Text>State Count</Text>
+              <Font name="Arial" size="11.25" style="0" />
+              <TextColor name="Black" />
+              <FillColor r="255" g="128" b="0" />
+              <Shape shape="0" />
+              <Justification Justification="4" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="175">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1195" y="628" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsEmpty([Click_date])||IsNull([Click_date])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsEmpty([Click_date])||IsNull([Click_date])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="176">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1291" y="640" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[Click_date]&gt;=[Open_date]</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Click_date]&gt;=[Open_date]</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="177">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1195" y="844" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsEmpty([Open_date])||IsNull([Open_date])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsEmpty([Open_date])||IsNull([Open_date])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="178">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1291" y="856" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[Open_date]&gt;=[del_date]</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[Open_date]&gt;=[del_date]</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="179">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1387" y="868" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="181">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1386" y="654" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="183">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1194" y="978" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>Length([MD5])=32</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Length([MD5])=32</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="184">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1291" y="964" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="186">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1195" y="1096" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsEmpty([MD5])||IsNull([MD5])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsEmpty([MD5])||IsNull([MD5])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="187">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1302" y="1122" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="192">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1182" y="1220" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="del_date" action="GroupBy" rename="del_date" />
+                <SummarizeField field="DECILE" action="GroupBy" rename="DECILE" />
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="GroupBy" rename="MD5" />
+                <SummarizeField field="Open_date" action="GroupBy" rename="Open_date" />
+                <SummarizeField field="Click_date" action="GroupBy" rename="Click_date" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="195">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="1194" y="750" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="md5" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="306">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="1291" y="1220" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="del_date" action="GroupBy" rename="del_date" />
+                <SummarizeField field="Count" action="GroupBy" rename="Count" />
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="Open_date" action="CountNonBlank" rename="CountNonBlank_Open_date" />
+                <SummarizeField field="Click_date" action="CountNonBlank" rename="CountNonBlank_Click_date" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="481">
+          <GuiSettings>
+            <Position x="1386" y="762" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="CountRecords.yxmc" />
+        </Node>
+        <Node ToolID="491">
+          <GuiSettings>
+            <Position x="1386" y="1002" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="CountRecords.yxmc" />
+        </Node>
+        <Node ToolID="492">
+          <GuiSettings>
+            <Position x="1386" y="1086" />
+          </GuiSettings>
+          <Properties>
+            <Configuration />
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="CountRecords.yxmc" />
+        </Node>
+        <Node ToolID="307">
+          <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+            <Position x="1278" y="1278" width="100" height="40" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Text>DayWise_Freq</Text>
+              <Font name="Arial" size="12" style="0" />
+              <TextColor name="Black" />
+              <FillColor r="255" g="128" b="0" />
+              <Shape shape="0" />
+              <Justification Justification="4" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="444">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="2105" y="1301" width="1369" height="360" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>CUSTOMER_FILE_CLEANING</Caption>
+          <Style TextColor="#314c4a" FillColor="#80ffff" BorderColor="#000000" Transparency="29" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>CUSTOMER_FILE_CLEANING</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="432">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="2658" y="1458" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>[ORDER_DATE]&gt;="2025-03-14"</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>[ORDER_DATE]&gt;="2025-03-14"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="433">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="2550" y="1458" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="435">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="2850" y="1446" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="EMAIL_MD5" selected="True" rename="cust_EMAIL_MD5" />
+                <SelectField field="ORDER_DATE" selected="True" rename="cust_ORDER_DATE" />
+                <SelectField field="CASS_AddressPlusSuite" selected="True" rename="cust_CASS_AddressPlusSuite" />
+                <SelectField field="CASS_ZIP" selected="True" rename="cust_CASS_ZIP" />
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="438">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="3210" y="1470" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsNull([cust_CASS_ZIP])||IsEmpty([cust_CASS_ZIP])||IsNull([cust_CASS_AddressPlusSuite])||IsEmpty([cust_CASS_AddressPlusSuite])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsNull([cust_CASS_ZIP])||IsEmpty([cust_CASS_ZIP])||IsNull([cust_CASS_AddressPlus...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="439">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="3234" y="1350" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>IsNull([cust_EMAIL_MD5])||IsEmpty([cust_EMAIL_MD5])</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>IsNull([cust_EMAIL_MD5])||IsEmpty([cust_EMAIL_MD5])</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="440">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="3306" y="1470" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="cust_CASS_AddressPlusSuite" />
+                <Field field="cust_CASS_ZIP" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="441">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="3342" y="1350" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="443">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="2442" y="1458" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="LowerCase(Trim([CASS_AddressPlusSuite]))" field="CASS_AddressPlusSuite" size="254" type="V_WString" />
+                <FormulaField expression="Trim([CASS_ZIP])" field="CASS_ZIP" size="254" type="V_WString" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>CASS_AddressPlusSuite = LowerCase(Trim([CASS_AddressPlusSuite]))
+CASS_ZIP = Trim...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="418">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="2226" y="1470" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="EMAIL_MD5" selected="True" />
+                <SelectField field="CUST_NO" selected="True" />
+                <SelectField field="ORDER_NO" selected="True" />
+                <SelectField field="ORDER_DATE" selected="True" />
+                <SelectField field="ORDER_TOTAL" selected="True" />
+                <SelectField field="CASS_AddressPlusSuite" selected="True" />
+                <SelectField field="CASS_ZIP" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="468">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="2130" y="1458" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords>4F164804500CDEC27BF1D59863936333A6014EC2F71F7A5399A464EB11A37CF8A</Passwords>
+              <File RecordLimit="" FileFormat="23">odbc:DSN=TEST_SF_DRIVER;UID=;PWD=__EncPwd1__|||select * 
+from "AWA_DB"."AWA_SCHEMA"."BOA_CLIENT_CUSTOMER_DATA"</File>
+              <FormatSpecificOptions>
+                <PreSQL />
+                <PreSQLOnConfig>True</PreSQLOnConfig>
+                <NoProgress>True</NoProgress>
+                <SessionReadOnly>True</SessionReadOnly>
+                <CacheData>False</CacheData>
+                <TableStyle>Quoted</TableStyle>
+                <ReadUncommitted>False</ReadUncommitted>
+                <PostSQL>USE AWA_DB.AWA_SCHEMA;</PostSQL>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DSN=TEST_SF_DRIVER
+Query=select * 
+from "AWA_DB"."AW...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="416">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="2322" y="1470" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="EMAIL_MD5" />
+                <Field field="CUST_NO" />
+                <Field field="ORDER_NO" />
+                <Field field="ORDER_DATE" />
+                <Field field="ORDER_TOTAL" />
+                <Field field="CASS_AddressPlusSuite" />
+                <Field field="CASS_ZIP" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="420">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="3390" y="1458" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="462">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="3365" y="507" width="1508" height="509" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>CTR_MATCHES</Caption>
+          <Style TextColor="#314c4a" FillColor="#80ff00" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>CTR_MATCHES</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="446">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="3390" y="556" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="447">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="3654" y="569" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="md5" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="cust_EMAIL_MD5" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Right_CASS_AddressPlusSuite" selected="True" rename="Right_CASS_AddressPlusSuite" input="Right_" />
+                    <SelectField field="Right_CASS_ZIP" selected="True" rename="Right_CASS_ZIP" input="Right_" />
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="448">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="3498" y="557" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="LowerCase(Trim([MD5]))" field="md5" size="254" type="V_WString" enabled="true" />
+                <FormulaField expression="LowerCase(Trim([CASS_AddressPlusSuite]))" field="CASS_ADDRESSPLUSSUITE" size="254" type="V_WString" enabled="true" />
+                <FormulaField expression="Trim([CASS_ZIP])" field="CASS_ZIP" size="254" type="V_WString" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>md5 = LowerCase(Trim([MD5]))
+CASS_ADDRESSPLUSSUITE = LowerCase(Trim([CASS_Addres...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="449">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="3798" y="558" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="450">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="3954" y="570" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="CASS_ADDRESSPLUSSUITE" />
+                <Field field="CASS_ZIP" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="cust_CASS_AddressPlusSuite" />
+                <Field field="cust_CASS_ZIP" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="*Unknown" selected="True" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="451">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+            <Position x="4170" y="810" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <AutoResetMode>ByName</AutoResetMode>
+              <MultiMetaInfo>
+                <MetaInfo name="#2">
+                  <RecordInfo>
+                    <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                    <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                    <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                    <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                    <Field name="CASS_ZIP" size="254" source="Formula: Trim([CASS_ZIP])" type="V_WString" column="5" />
+                    <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="Formula: LowerCase(Trim([CASS_AddressPlusSuite]))" type="V_WString" column="6" />
+                    <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                    <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                    <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                    <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+                    <Field name="cust_EMAIL_MD5" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="11" />
+                    <Field name="CUST_NO" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="12" />
+                    <Field name="ORDER_NO" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="13" />
+                    <Field name="cust_ORDER_DATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="14" />
+                    <Field name="ORDER_TOTAL" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="15" />
+                    <Field name="cust_CASS_AddressPlusSuite" size="254" source="Formula: LowerCase(Trim([CASS_AddressPlusSuite]))" type="V_WString" column="16" />
+                    <Field name="cust_CASS_ZIP" size="254" source="Formula: Trim([CASS_ZIP])" type="V_WString" column="17" />
+                    <Field name="Match_Level" size="1073741823" source="Formula: &quot;MD5&quot;" type="V_WString" column="18" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo name="#1">
+                  <RecordInfo>
+                    <Field name="md5" size="254" source="Formula: LowerCase(Trim([MD5]))" type="V_WString" column="1" />
+                    <Field name="decile" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="2" />
+                    <Field name="open_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="3" />
+                    <Field name="click_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="4" />
+                    <Field name="CASS_ZIP" size="254" source="Formula: Trim([CASS_ZIP])" type="V_WString" column="5" />
+                    <Field name="CASS_ADDRESSPLUSSUITE" size="254" source="Formula: LowerCase(Trim([CASS_AddressPlusSuite]))" type="V_WString" column="6" />
+                    <Field name="CASS_STATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="7" />
+                    <Field name="SCORE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="8" />
+                    <Field name="del_date" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CAMPAIGN_DATA&quot;" type="V_WString" column="9" />
+                    <Field name="PERCENTILE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_MASTER_DATA&quot;" type="V_WString" column="10" />
+                    <Field name="cust_EMAIL_MD5" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="11" />
+                    <Field name="CUST_NO" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="12" />
+                    <Field name="ORDER_NO" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="13" />
+                    <Field name="cust_ORDER_DATE" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="14" />
+                    <Field name="ORDER_TOTAL" size="254" source="File: odbc:DSN=TEST_SF_DRIVER;UID=HEMANTH;PWD=__EncPwd1__|||select * &#xA;from &quot;AWA_DB&quot;.&quot;AWA_SCHEMA&quot;.&quot;BOA_CLIENT_CUSTOMER_DATA&quot;" type="V_WString" column="15" />
+                    <Field name="cust_CASS_AddressPlusSuite" size="254" source="Formula: LowerCase(Trim([CASS_AddressPlusSuite]))" type="V_WString" column="16" />
+                    <Field name="cust_CASS_ZIP" size="254" source="Formula: Trim([CASS_ZIP])" type="V_WString" column="17" />
+                    <Field name="Match_Level" size="1073741823" source="Formula: &quot;Postal&quot;" type="V_WString" column="18" />
+                  </RecordInfo>
+                </MetaInfo>
+              </MultiMetaInfo>
+              <ByName_ErrorMode>Warning</ByName_ErrorMode>
+              <ByName_OutputMode>All</ByName_OutputMode>
+              <Mode>ManualDelayed</Mode>
+              <SetOutputOrder value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+        </Node>
+        <Node ToolID="452">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="4482" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="453">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="4578" y="786" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="MD5" action="Count" rename="Count" />
+                <SummarizeField field="MD5" action="CountDistinct" rename="CountDistinct_MD5" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="455">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="3822" y="810" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;MD5&quot;" field="Match_Level" size="1073741823" type="V_WString" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Match_Level = "MD5"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="456">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="4062" y="570" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="&quot;Postal&quot;" field="Match_Level" size="1073741823" type="V_WString" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText><![CDATA[Match_Level = "Postal"
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="457">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="4374" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="md5" />
+                <Field field="decile" />
+                <Field field="open_date" />
+                <Field field="click_date" />
+                <Field field="CASS_ZIP" />
+                <Field field="CASS_ADDRESSPLUSSUITE" />
+                <Field field="CASS_STATE" />
+                <Field field="cust_EMAIL_MD5" />
+                <Field field="CUST_NO" />
+                <Field field="ORDER_NO" />
+                <Field field="cust_ORDER_DATE" />
+                <Field field="cust_CASS_AddressPlusSuite" />
+                <Field field="cust_CASS_ZIP" />
+                <Field field="Match_Level" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="458">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="4266" y="810" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression><![CDATA[DateTimeDiff([cust_ORDER_DATE],[del_date],"days")>=0 
+&&
+DateTimeDiff([cust_ORDER_DATE],[del_date],"days")<=30 
+
+]]></Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>DateTimeDiff([cust_ORDER_DATE],[del_date],"days")&gt;=0 
+&amp;&amp;
+DateTimeDiff([cust_ORDE...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="503">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="4578" y="690" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">BOA_CONVERTER_DATA_.CSV</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="True" />
+              <MultiFileType>Suffix</MultiFileType>
+              <MultiFileField>del_date</MultiFileField>
+              <KeepField value="True" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>BOA_CONVERTER_DATA_.CSV</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="513">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="4578" y="606" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="CUST_NO" action="GroupBy" rename="CUST_NO" />
+                <SummarizeField field="ORDER_NO" action="Count" rename="Count" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="514">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+            <Position x="4770" y="606" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>First</Mode>
+              <N>10</N>
+              <GroupFields orderChanged="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>First 10 rows</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+        </Node>
+        <Node ToolID="517">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+            <Position x="4674" y="606" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SortInfo locale="1033">
+                <Field field="Count" order="Descending" />
+              </SortInfo>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>Count - Descending</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="175" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="195" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="177" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="183" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="186" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="192" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="144" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="131" Connection="Output" />
+      <Destination ToolID="393" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="268" Connection="Output" />
+      <Destination ToolID="339" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="267" Connection="Output" />
+      <Destination ToolID="339" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="286" Connection="Output" />
+      <Destination ToolID="471" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="339" Connection="Join" />
+      <Destination ToolID="131" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="393" Connection="Output" />
+      <Destination ToolID="133" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="393" Connection="Output" />
+      <Destination ToolID="512" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="267" Connection="Output" />
+      <Destination ToolID="367" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="463" Connection="Output" />
+      <Destination ToolID="469" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="464" Connection="Output" />
+      <Destination ToolID="286" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="464" Connection="Output" />
+      <Destination ToolID="268" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="465" Connection="Output" />
+      <Destination ToolID="466" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="466" Connection="Output" />
+      <Destination ToolID="267" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="469" Connection="Output" />
+      <Destination ToolID="464" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="470" Connection="Output" />
+      <Destination ToolID="472" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="470" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="475" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="478" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="482" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#5">
+      <Origin ToolID="485" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#6">
+      <Origin ToolID="488" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#7">
+      <Origin ToolID="493" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#8">
+      <Origin ToolID="496" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#9">
+      <Origin ToolID="500" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#10">
+      <Origin ToolID="504" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection name="#11">
+      <Origin ToolID="515" Connection="Output" />
+      <Destination ToolID="507" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="471" Connection="Output" />
+      <Destination ToolID="470" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="476" Connection="Output" />
+      <Destination ToolID="475" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="479" Connection="Output" />
+      <Destination ToolID="478" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="483" Connection="Output" />
+      <Destination ToolID="482" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="486" Connection="Output" />
+      <Destination ToolID="485" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="489" Connection="Output" />
+      <Destination ToolID="488" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="494" Connection="Output" />
+      <Destination ToolID="493" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="497" Connection="Output" />
+      <Destination ToolID="496" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="499" Connection="Output9" />
+      <Destination ToolID="501" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="501" Connection="Output" />
+      <Destination ToolID="500" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="505" Connection="Output" />
+      <Destination ToolID="504" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="507" Connection="Output" />
+      <Destination ToolID="508" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="509" Connection="Output" />
+      <Destination ToolID="510" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="510" Connection="Output" />
+      <Destination ToolID="511" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="512" Connection="Output" />
+      <Destination ToolID="511" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="511" Connection="Left" />
+      <Destination ToolID="446" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="516" Connection="Output" />
+      <Destination ToolID="515" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="367" Connection="Output" />
+      <Destination ToolID="355" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="359" Connection="Unique" />
+      <Destination ToolID="355" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="360" Connection="Output" />
+      <Destination ToolID="361" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="360" Connection="Output" />
+      <Destination ToolID="499" Connection="Input8" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="358" Connection="Output" />
+      <Destination ToolID="360" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="355" Connection="Join" />
+      <Destination ToolID="358" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="352" Connection="False" />
+      <Destination ToolID="348" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="348" Connection="True" />
+      <Destination ToolID="349" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="348" Connection="True" />
+      <Destination ToolID="346" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="346" Connection="Output" />
+      <Destination ToolID="359" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="395" Connection="Output" />
+      <Destination ToolID="352" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="467" Connection="Output" />
+      <Destination ToolID="395" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="144" Connection="Output" />
+      <Destination ToolID="284" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="284" Connection="Output" />
+      <Destination ToolID="476" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="175" Connection="False" />
+      <Destination ToolID="176" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="176" Connection="False" />
+      <Destination ToolID="181" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="176" Connection="False" />
+      <Destination ToolID="509" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="178" Connection="False" />
+      <Destination ToolID="509" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="183" Connection="False" />
+      <Destination ToolID="509" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="195" Connection="Duplicates" />
+      <Destination ToolID="509" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="177" Connection="False" />
+      <Destination ToolID="178" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="178" Connection="False" />
+      <Destination ToolID="179" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="179" Connection="Output" />
+      <Destination ToolID="486" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="181" Connection="Output" />
+      <Destination ToolID="479" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="183" Connection="True" />
+      <Destination ToolID="184" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="183" Connection="False" />
+      <Destination ToolID="491" Connection="Input8" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="186" Connection="False" />
+      <Destination ToolID="187" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="186" Connection="True" />
+      <Destination ToolID="492" Connection="Input8" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="192" Connection="Output" />
+      <Destination ToolID="306" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="195" Connection="Duplicates" />
+      <Destination ToolID="481" Connection="Input8" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="306" Connection="Output" />
+      <Destination ToolID="497" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="481" Connection="Output9" />
+      <Destination ToolID="483" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="491" Connection="Output9" />
+      <Destination ToolID="489" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="492" Connection="Output9" />
+      <Destination ToolID="494" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="432" Connection="True" />
+      <Destination ToolID="435" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="433" Connection="Output" />
+      <Destination ToolID="432" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="435" Connection="Output" />
+      <Destination ToolID="439" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="435" Connection="Output" />
+      <Destination ToolID="438" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="438" Connection="False" />
+      <Destination ToolID="440" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="439" Connection="False" />
+      <Destination ToolID="441" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="440" Connection="Unique" />
+      <Destination ToolID="420" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="441" Connection="Output" />
+      <Destination ToolID="447" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="448" Connection="Output" />
+      <Destination ToolID="447" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="443" Connection="Output" />
+      <Destination ToolID="433" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="418" Connection="Output" />
+      <Destination ToolID="416" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="468" Connection="Output" />
+      <Destination ToolID="418" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="416" Connection="Unique" />
+      <Destination ToolID="443" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="420" Connection="Output" />
+      <Destination ToolID="450" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="449" Connection="Output" />
+      <Destination ToolID="450" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="446" Connection="Output" />
+      <Destination ToolID="448" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="447" Connection="Left" />
+      <Destination ToolID="449" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="447" Connection="Join" />
+      <Destination ToolID="455" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="450" Connection="Join" />
+      <Destination ToolID="456" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="451" Connection="Output" />
+      <Destination ToolID="458" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="452" Connection="Output" />
+      <Destination ToolID="453" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="452" Connection="Output" />
+      <Destination ToolID="503" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="452" Connection="Output" />
+      <Destination ToolID="513" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="453" Connection="Output" />
+      <Destination ToolID="505" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="455" Connection="Output" />
+      <Destination ToolID="451" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="456" Connection="Output" />
+      <Destination ToolID="451" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="457" Connection="Unique" />
+      <Destination ToolID="452" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="458" Connection="True" />
+      <Destination ToolID="457" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="513" Connection="Output" />
+      <Destination ToolID="517" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="514" Connection="Output" />
+      <Destination ToolID="516" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="517" Connection="Output" />
+      <Destination ToolID="514" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="False" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>MARKETING_ANALYTICS</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="19977193-5863-4f8d-bc21-f500e36e2882" />
+      <Telemetry>
+        <PreviousWorkflowId value="" />
+        <OriginWorkflowId value="19977193-5863-4f8d-bc21-f500e36e2882" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
